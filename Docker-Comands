@@ -1,0 +1,21 @@
+Use OFFICIAL WordPress Image
+
+docker run -d \
+-p 8080:80 \
+--name wordpress-site \
+--network wp-network \
+-e WORDPRESS_DB_HOST=wordpress-db:3306 \
+-e WORDPRESS_DB_USER=root \
+-e WORDPRESS_DB_PASSWORD=root \
+-e WORDPRESS_DB_NAME=wordpress \
+wordpress:php8.1-apache
+
+
+Start MySQL
+
+docker run -d \
+--name wordpress-db \
+--network wp-network \
+-e MYSQL_DATABASE=wordpress \
+-e MYSQL_ROOT_PASSWORD=root \
+mysql:8.0
